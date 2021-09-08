@@ -8,7 +8,7 @@
 !bashrc
 !compton.conf
 # !nvim/*
-# !qtile/config.py
+!qtile/config.py
 !user-dirs.dirs
 !user-dirs.locale
 !tmux
