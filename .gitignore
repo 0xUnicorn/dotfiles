@@ -7,7 +7,7 @@
 !alacritty/*
 !bashrc
 !compton.conf
-# !nvim/*
+!nvim
 !qtile/config.py
 !user-dirs.dirs
 !user-dirs.locale
