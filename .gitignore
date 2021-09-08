@@ -11,5 +11,5 @@
 # !qtile/config.py
 !user-dirs.dirs
 !user-dirs.locale
-# !tmux/*
+!tmux
 !X
