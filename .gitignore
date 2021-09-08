@@ -1,0 +1,15 @@
+# Ignore everything
+/*
+
+# Except following:
+!.gitignore
+!README.md
+!alacritty/*
+!bashrc
+!compton.conf
+# !nvim/*
+# !qtile/config.py
+!user-dirs.dirs
+!user-dirs.locale
+# !tmux/*
+# !X/*
