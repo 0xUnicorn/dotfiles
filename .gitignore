@@ -12,4 +12,4 @@
 !user-dirs.dirs
 !user-dirs.locale
 # !tmux/*
-# !X/*
+!X
