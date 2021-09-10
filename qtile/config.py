@@ -22,6 +22,11 @@ keys = [
         desc="Spawn a command using dmenu_run"
     ),
 
+    Key([mod, "shift"], "s",
+        lazy.spawn("gnome-screenshot -i"),
+        desc="Screenshot of an area to clipboard"
+    ),
+
     Key([mod], "b",
         lazy.spawn(MY_BROWSER),
         desc="Spawn a command using dmenu_run"
