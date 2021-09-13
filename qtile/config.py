@@ -189,20 +189,67 @@ layouts = [
 
 # WIDGETS
 
+colors = [
+    ["#002B36", "#002B36"], # panel background
+    ["#F77FF7", "#F77FF7"], # background for current screen tab
+    ["#ffffff", "#ffffff"], # font color for group names
+    ["#00bc20", "#00bc20"], # border line color for current tab
+    ["#74438f", "#74438f"], # border line color for 'other tabs' and color for 'odd widgets'
+    ["#4f76c7", "#4f76c7"], # color for the 'even widgets'
+    ["#e1acff", "#e1acff"], # window name
+    ["#ecbbfb", "#ecbbfb"]  # backbround for inactive screens
+]
+
 widget_defaults = dict(
-    font='sans',
+    font='Ubuntu Mono',
     fontsize=12,
-    padding=3,
+    padding=2,
+    background=colors[0]
 )
+
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
+                widget.Sep(
+                    linewidth = 0,
+                    padding = 8
+                ),
                 widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
+                widget.Sep(
+                    linewidth = 2,
+                    padding = 15,
+                    foreground = colors[5]
+                ),
+                widget.GroupBox(
+                    font = "Ubuntu Bold",
+                    fontsize = 9,
+                    margin_y = 3,
+                    margin_x = 0,
+                    padding_y = 5,
+                    padding_x = 3,
+                    borderwidth = 3,
+                    active = colors[1],
+                    # inactive = colors[7]
+                    # rounded
+                    # highlight_color
+                    # highlight_method
+                    this_current_screen_border = colors[3],
+                    this_screen_border = colors[4]
+                    # other_current_screen_border
+                    # other_screen_border
+                    # foreground
+                    # background
+                ),
+                widget.Sep(
+                    linewidth = 2,
+                    padding = 10,
+                    foreground = colors[5]
+                ),
+                widget.Prompt(
+                ),
                 widget.WindowName(),
                 widget.Chord(
                     chords_colors={
@@ -210,11 +257,37 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+                widget.Systray(
+                    padding = 5
+                ),
+                widget.Sep(
+                    linewidth = 2,
+                    padding = 15,
+                    foreground = colors[5]
+                ),
+                widget.Volume(
+                    foreground = colors[2],
+                    background = colors[0],
+                    padding = 5
+                ),
+                widget.Net(
+                    interface = "enp6s0",
+                    format = '↓{down}↑{up}',
+                    foreground = colors[2],
+                    background = colors[0],
+                    padding = 5
+                ),
+                widget.Sep(
+                    linewidth = 2,
+                    padding = 15,
+                    foreground = colors[5]
+                ),
+                widget.Clock(format='%a %d-%m-%y %H:%M:%S'),
                 widget.QuickExit(),
+                widget.Sep(
+                    linewidth = 0,
+                    padding = 8,
+                ),
             ],
             24,
         ),
@@ -244,6 +317,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='ssh-askpass'),  # ssh-askpass
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
+    Match(title='authy'), # Authy
 ], **layout_theme)
 auto_fullscreen = True
 focus_on_window_activation = "smart"
