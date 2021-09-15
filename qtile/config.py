@@ -185,6 +185,7 @@ layouts = [
     layout.Max(**layout_theme),
     layout.Stack(num_stacks=2),
     layout.RatioTile(**layout_theme),
+    layout.Floating(**layout_theme)
 ]
 
 # WIDGETS
@@ -265,11 +266,11 @@ screens = [
                     padding = 15,
                     foreground = colors[5]
                 ),
-                widget.Volume(
-                    foreground = colors[2],
-                    background = colors[0],
-                    padding = 5
-                ),
+#                widget.Volume(
+#                    foreground = colors[2],
+#                    background = colors[0],
+#                    padding = 5
+#                ),
                 widget.Net(
                     interface = "enp6s0",
                     format = '↓{down}↑{up}',
