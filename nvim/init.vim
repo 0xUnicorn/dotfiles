@@ -37,3 +37,7 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
+" Searches
+set ignorecase " All searches will be case insensitive
+set smartcase " All searches containing uppercase letter will be case sensitive
+
