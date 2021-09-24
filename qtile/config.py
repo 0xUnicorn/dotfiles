@@ -156,11 +156,26 @@ group_names = [("WWW", {'layout': 'monadtall'}),
                ("WWW2", {'layout': 'monadtall'}),
                ("GFX", {'layout': 'floating'})]
 
-groups = [Group(name, **kwargs) for name, kwargs in group_names]
+groups = [
+    Group(name, **kwargs) for
+    name, kwargs in group_names
+]
 
 for i, (name, kwargs) in enumerate(group_names, 1):
-    keys.append(Key([mod], str(i), lazy.group[name].toscreen()))        # Switch to another group
-    keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
+    keys.append(
+        Key(
+            [mod],
+            str(i),
+            lazy.group[name].toscreen()
+        )
+    ) # Switch to another group
+    keys.append(
+        Key(
+            [mod, "shift"],
+            str(i),
+            lazy.window.togroup(name)
+        )
+    ) # Send current window to another group
 
 # LAYOUTS
 
@@ -172,19 +187,9 @@ layout_theme = {
 }
 
 layouts = [
-    #layout.MonadWide(**layout_theme),
-    #layout.Bsp(**layout_theme),
-    #layout.Stack(stacks=2, **layout_theme),
-    #layout.Columns(**layout_theme),
-    #layout.RatioTile(**layout_theme),
-    #layout.Tile(shift_windows=True, **layout_theme),
-    #layout.VerticalTile(**layout_theme),
-    #layout.Matrix(**layout_theme),
-    #layout.Zoomy(**layout_theme),
     layout.MonadTall(**layout_theme),
     layout.Max(**layout_theme),
     layout.Stack(num_stacks=2),
-    #layout.RatioTile(**layout_theme),
     layout.Floating(**layout_theme)
 ]
 
@@ -289,7 +294,7 @@ def widgets_list():
         ),
         widget.Net(
             interface = "enp6s0",
-            format = '↓{down}↑{up}',
+            format = '{down}↓↑{up}',
             foreground = colors[2],
             background = colors[0],
             padding = 5
@@ -299,7 +304,9 @@ def widgets_list():
             padding = 15,
             foreground = colors[5]
         ),
-        widget.Clock(format='%a %d-%m-%y %H:%M:%S'),
+        widget.Clock(
+            format='%a %d-%m-%y %H:%M:%S'
+        ),
         widget.Sep(
             linewidth = 0,
             padding = 8,
