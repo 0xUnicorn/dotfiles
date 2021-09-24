@@ -166,7 +166,7 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 
 layout_theme = {
     "border_width": 2,
-    "margin": 8,
+    "margin": 10,
     "border_focus": "e1acff",
     "border_normal": "1D2330"
 }
@@ -184,14 +184,14 @@ layouts = [
     layout.MonadTall(**layout_theme),
     layout.Max(**layout_theme),
     layout.Stack(num_stacks=2),
-    layout.RatioTile(**layout_theme),
+    #layout.RatioTile(**layout_theme),
     layout.Floating(**layout_theme)
 ]
 
 # WIDGETS
 
 colors = [
-    ["#002B36", "#002B36"], # panel background
+    ["#092441", "#092441"], # panel background
     ["#F77FF7", "#F77FF7"], # background for current screen tab
     ["#ffffff", "#ffffff"], # font color for group names
     ["#00bc20", "#00bc20"], # border line color for current tab
@@ -210,90 +210,126 @@ widget_defaults = dict(
 
 extension_defaults = widget_defaults.copy()
 
-screens = [
-    Screen(
-        top=bar.Bar(
-            [
-                widget.Sep(
-                    linewidth = 0,
-                    padding = 8
-                ),
-                widget.CurrentLayout(),
-                widget.Sep(
-                    linewidth = 2,
-                    padding = 15,
-                    foreground = colors[5]
-                ),
-                widget.GroupBox(
-                    font = "Ubuntu Bold",
-                    fontsize = 9,
-                    margin_y = 3,
-                    margin_x = 0,
-                    padding_y = 5,
-                    padding_x = 3,
-                    borderwidth = 3,
-                    active = colors[1],
-                    # inactive = colors[7]
-                    # rounded
-                    # highlight_color
-                    # highlight_method
-                    this_current_screen_border = colors[3],
-                    this_screen_border = colors[4]
-                    # other_current_screen_border
-                    # other_screen_border
-                    # foreground
-                    # background
-                ),
-                widget.Sep(
-                    linewidth = 2,
-                    padding = 10,
-                    foreground = colors[5]
-                ),
-                widget.Prompt(
-                ),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        'launch': ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.Systray(
-                    padding = 5
-                ),
-                widget.Sep(
-                    linewidth = 2,
-                    padding = 15,
-                    foreground = colors[5]
-                ),
-#                widget.Volume(
-#                    foreground = colors[2],
-#                    background = colors[0],
-#                    padding = 5
-#                ),
-                widget.Net(
-                    interface = "enp6s0",
-                    format = '↓{down}↑{up}',
-                    foreground = colors[2],
-                    background = colors[0],
-                    padding = 5
-                ),
-                widget.Sep(
-                    linewidth = 2,
-                    padding = 15,
-                    foreground = colors[5]
-                ),
-                widget.Clock(format='%a %d-%m-%y %H:%M:%S'),
-                widget.QuickExit(),
-                widget.Sep(
-                    linewidth = 0,
-                    padding = 8,
-                ),
-            ],
-            24,
+def widgets_list():
+    return [
+        widget.Sep(
+            linewidth = 0,
+            padding = 8
         ),
-    ),
-]
+        widget.CurrentLayout(),
+        widget.Sep(
+            linewidth = 1,
+            padding = 15,
+            foreground = colors[5]
+        ),
+        widget.GroupBox(
+            font = "Ubuntu Bold",
+            fontsize = 9,
+            margin_y = 3,
+            margin_x = 0,
+            padding_y = 5,
+            padding_x = 3,
+            borderwidth = 3,
+            active = colors[1],
+            # inactive = colors[7]
+            # rounded
+            # highlight_color
+            # highlight_method
+            this_current_screen_border = colors[3],
+            this_screen_border = colors[4]
+            # other_current_screen_border
+            # other_screen_border
+            # foreground
+            # background
+        ),
+        widget.Sep(
+            linewidth = 1,
+            padding = 15,
+            foreground = colors[5]
+        ),
+        widget.Prompt(
+        ),
+        widget.Spacer(
+            length=bar.STRETCH
+        ),
+        widget.Chord(
+            chords_colors={
+                'launch': ("#ff0000", "#ffffff"),
+            },
+            name_transform=lambda name: name.upper(),
+        ),
+        widget.Systray(
+            padding = 5
+        ),
+        widget.Sep(
+            linewidth = 1,
+            padding = 15,
+            foreground = colors[5]
+        ),
+        widget.Volume(
+            channel = "Master",
+            device = "pulse",
+            emoji = True,
+            foreground = colors[2],
+            background = colors[0],
+            padding = 5
+        ),
+        widget.Volume(
+            channel = "Master",
+            device = "pulse",
+            emoji = False,
+            foreground = colors[2],
+            background = colors[0],
+            padding = 5
+        ),
+        widget.Sep(
+            linewidth = 1,
+            padding = 15,
+            foreground = colors[5]
+        ),
+        widget.Net(
+            interface = "enp6s0",
+            format = '↓{down}↑{up}',
+            foreground = colors[2],
+            background = colors[0],
+            padding = 5
+        ),
+        widget.Sep(
+            linewidth = 1,
+            padding = 15,
+            foreground = colors[5]
+        ),
+        widget.Clock(format='%a %d-%m-%y %H:%M:%S'),
+        widget.Sep(
+            linewidth = 0,
+            padding = 8,
+        )
+    ]
+
+
+def init_widgets_screen1():
+    """Left of primary"""
+    return widgets_list()
+
+
+def init_widgets_screen2():
+    """Primary"""
+    return widgets_list()
+
+
+def init_widgets_screen3():
+    """Right of primary"""
+    return widgets_list()
+
+def init_screens():
+    return [
+        Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=25)),
+        Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=25)),
+        Screen(top=bar.Bar(widgets=init_widgets_screen3(), opacity=1.0, size=25))
+    ]
+
+# Start screens
+screens = init_screens()
 
 # Drag floating layouts.
 mouse = [
