@@ -56,6 +56,11 @@ let g:airline_symbols.linenr = ''
 " Default configs "
 """""""""""""""""""
 
+" Mapping leader
+:let mapleader = "-"
+" Leader save
+nnoremap <Leader><space> :w<CR>
+
 " Color settings
 colorscheme dracula
 set termguicolors
