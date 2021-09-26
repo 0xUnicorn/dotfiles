@@ -9,9 +9,56 @@ set spelllang=en,da
 nnoremap <silent> <F12> :set spell!<cr>
 inoremap <silent> <F12> <C-O>:set spell!<cr>
 
+" Polyglot syntaxes
+let g:python_highlight_all = 1
+
+" VIM Airline
+let g:airline_theme='dark'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+
 """""""""""""""""""
 " Default configs "
 """""""""""""""""""
+
+" Color settings
+colorscheme dracula
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+" Colorizer
+lua require'colorizer'.setup()
 
 " Line numbers
 set number relativenumber
@@ -29,6 +76,17 @@ set expandtab       " tabs are space
 set autoindent
 set copyindent      " copy indent from the previous line
 
+" Python PEP8 indentation
+au BufNewFile,BufRead *.py
+    \ setlocal textwidth=79
+    \| setlocal fileformat=unix
+
+" Full stack development
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ setlocal tabstop=2
+    \| setlocal softtabstop=2
+    \| setlocal shiftwidth=2
+
 " Splits
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -40,4 +98,3 @@ set splitright
 " Searches
 set ignorecase " All searches will be case insensitive
 set smartcase " All searches containing uppercase letter will be case sensitive
-

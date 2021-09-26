@@ -9,6 +9,9 @@ compton &
 # KEYBOARD SPEED
 xset r rate 200 60
 
+# KEYBOARD MAPPINGS
+setxkbmap -option caps:escape
+
 # XRANDR
 xrandr --output DP-0 --auto --primary \
        --output HDMI-0 --auto --left-of DP-0 \

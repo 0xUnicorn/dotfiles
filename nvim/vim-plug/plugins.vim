@@ -11,11 +11,21 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
     " File Explorer
-    Plug 'scrooloose/NERDTree'
-    " Auto pairs for '(' '[' '{'
-    Plug 'jiangmiao/auto-pairs'
+    Plug 'preservim/nerdtree'
     " Markdown Preview
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     " VIM/TMUX Navigator
     Plug 'christoomey/vim-tmux-navigator'
+    " Indent Python correctly to PEP8
+    Plug 'Vimjas/vim-python-pep8-indent'
+    " Colorizer
+    Plug 'norcalli/nvim-colorizer.lua'
+    " Dracula theme
+    Plug 'dracula/vim',{'as':'dracula'}
+    " VIM Airline bar + themes
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    " GIT Support
+    Plug 'tpope/vim-fugitive'
+
 call plug#end()

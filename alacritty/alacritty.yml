@@ -104,33 +104,88 @@ scrolling:
 # Color schema
 
 background_opacity: 1.0
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#282a36' #182C41'
+#     foreground: '#FF66D8'
+# 
+#   # Normal colors
+#   normal:
+#     black:   '#363636'
+#     red:     '#8308ff'
+#     green:   '#83ff08'
+#     yellow:  '#ff8308'
+#     blue:    '#0883ff'
+#     magenta: '#FF0086'
+#     cyan:    '#00FF04'
+#     white:   '#b6b6b6'
+# 
+#    # Bright colors
+#   bright:
+#     black:   '#424242'
+#     red:     '#8e1eff'
+#     green:   '#8eff1e'
+#     yellow:  '#ff8e1e'
+#     blue:    '#1e8eff'
+#     magenta: '#FF1A93'
+#     cyan:    '#61FF63'
+#     white:   '#c2c2c2'
+
 colors:
-  # Default colors
   primary:
-    background: '0x182C41'
-    foreground: '0xFF66D8'
-
-  # Normal colors
+    background: '#282a36'
+    foreground: '#FF30D8'
+  cursor:
+    text: CellBackground
+    cursor: CellForeground
+  vi_mode_cursor:
+    text: CellBackground
+    cursor: CellForeground
+  search:
+    matches:
+      foreground: '#44475a'
+      background: '#50fa7b'
+    focused_match:
+      foreground: '#44475a'
+      background: '#ffb86c'
+    bar:
+      background: '#282a36'
+      foreground: '#f8f8f2'
+  line_indicator:
+    foreground: '#50fa7b'
+    background: '#ff5555'
+  selection:
+    text: CellForeground
+    background: '#44468a'
   normal:
-    black:   '0x363636'
-    red:     '0x8308ff'
-    green:   '0x83ff08'
-    yellow:  '0xff8308'
-    blue:    '0x0883ff'
-    magenta: '0xFF0086'
-    cyan:    '0x00FF04'
-    white:   '0xb6b6b6'
-
-  # Bright colors
+    black:   '#000000'
+    red:     '#ff5555'
+    green:   '#50fa7b'
+    yellow:  '#f1fa8c'
+    blue:    '#bd93f9'
+    magenta: '#ff79c6'
+    cyan:    '#8be9fd'
+    white:   '#bfbfbf'
   bright:
-    black:   '0x424242'
-    red:     '0x8e1eff'
-    green:   '0x8eff1e'
-    yellow:  '0xff8e1e'
-    blue:    '0x1e8eff'
-    magenta: '0xFF1A93'
-    cyan:    '0x61FF63'
-    white:   '0xc2c2c2'
+    black:   '#4d4d4d'
+    red:     '#ff6e67'
+    green:   '#5af78e'
+    yellow:  '#f4f99d'
+    blue:    '#caa9fa'
+    magenta: '#ff92d0'
+    cyan:    '#9aedfe'
+    white:   '#e6e6e6'
+  dim:
+    black:   '#14151b'
+    red:     '#ff2222'
+    green:   '#1ef956'
+    yellow:  '#ebf85b'
+    blue:    '#4d5b86'
+    magenta: '#ff46b0'
+    cyan:    '#59dffc'
+    white:   '#e6e6d1'
+
 
 draw_bold_text_with_bright_colors: true
 font:
