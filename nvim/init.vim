@@ -12,12 +12,17 @@ inoremap <silent> <F12> <C-O>:set spell!<cr>
 " Polyglot syntaxes
 let g:python_highlight_all = 1
 
+" VirtualEnv
+let g:virtualenv_directory = $PWD
+
 " VIM Airline
 let g:airline_theme='dark'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -81,6 +86,9 @@ au BufNewFile,BufRead *.py
     \ setlocal textwidth=79
     \| setlocal fileformat=unix
 
+" Python configurations
+let g:python3_host_prog = '/usr/bin/python3'
+
 " Full stack development
 au BufNewFile,BufRead *.js, *.html, *.css
     \ setlocal tabstop=2
@@ -94,6 +102,10 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
+
+" Move between buffers
+nnoremap <C-S-L> :bn<CR>
+nnoremap <C-S-H> :bp<CR>
 
 " Searches
 set ignorecase " All searches will be case insensitive
