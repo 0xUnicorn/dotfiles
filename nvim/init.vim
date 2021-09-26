@@ -109,8 +109,8 @@ set splitbelow
 set splitright
 
 " Move between buffers
-nnoremap <C-S-L> :bn<CR>
-nnoremap <C-S-H> :bp<CR>
+noremap . :bn<CR>
+noremap , :bp<CR>
 
 " Searches
 set ignorecase " All searches will be case insensitive
