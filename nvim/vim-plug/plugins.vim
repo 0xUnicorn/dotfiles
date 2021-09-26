@@ -22,6 +22,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'norcalli/nvim-colorizer.lua'
     " Dracula theme
     Plug 'dracula/vim',{'as':'dracula'}
+    " DevIcons
+    Plug 'ryanoasis/vim-devicons'
     " VIM Airline bar + themes
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
