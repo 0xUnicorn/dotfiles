@@ -31,5 +31,15 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'tpope/vim-fugitive'
     " Virtual-env support
     Plug 'jmcantrell/vim-virtualenv'
+    " NVIM LSP Config
+    Plug 'neovim/nvim-lspconfig'
+    " NVIM Completion engine
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'l3MON4D3/LuaSnip'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-nvim-lua'
+    Plug 'f3fora/cmp-spell'
 
 call plug#end()

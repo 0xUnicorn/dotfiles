@@ -1,5 +1,12 @@
 source /home/unicorn/.config/nvim/vim-plug/plugins.vim
 
+" LSPConfig
+source ~/.config/nvim/plug-config/lsp-config.vim
+luafile ~/.config/nvim/lua/lsp/python-ls.lua
+
+" Autocomplete (nvim-cmp)
+luafile ~/.config/nvim/lua/plugins/cmp-config.lua
+
 " NERDTree
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
