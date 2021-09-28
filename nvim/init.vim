@@ -21,6 +21,7 @@ let g:python_highlight_all = 1
 
 " VirtualEnv
 let g:virtualenv_directory = $PWD
+let g:virtualenv_name = '.venv'
 
 " VIM Airline
 let g:airline_theme='dark'
@@ -118,6 +119,7 @@ set splitright
 " Move between buffers
 noremap . :bn<CR>
 noremap , :bp<CR>
+noremap <Leader>- :bdelete<CR>
 
 " Searches
 set ignorecase " All searches will be case insensitive

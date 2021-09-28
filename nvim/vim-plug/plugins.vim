@@ -15,7 +15,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Markdown Preview
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     " VIM/TMUX Navigator
-    Plug 'christoomey/vim-tmux-navigator'
+    "" Plug 'christoomey/vim-tmux-navigator'
     " Indent Python correctly to PEP8
     Plug 'Vimjas/vim-python-pep8-indent'
     " Colorizer
@@ -29,17 +29,19 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'vim-airline/vim-airline-themes'
     " GIT Support
     Plug 'tpope/vim-fugitive'
+    " Auto Pairs
+    Plug 'jiangmiao/auto-pairs'
     " Virtual-env support
     Plug 'jmcantrell/vim-virtualenv'
     " NVIM LSP Config
     Plug 'neovim/nvim-lspconfig'
+    " VIM vsnip
+    Plug 'hrsh7th/vim-vsnip'
     " NVIM Completion engine
     Plug 'hrsh7th/nvim-cmp'
-    Plug 'l3MON4D3/LuaSnip'
+    " NVIM-CMP sources
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
-    Plug 'hrsh7th/cmp-nvim-lua'
-    Plug 'f3fora/cmp-spell'
 
 call plug#end()
