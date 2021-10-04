@@ -15,6 +15,7 @@ setxkbmap -option caps:escape
 # TOUCHPAD CLICK
 synclient tapbutton1=1
 synclient VertScrollDelta=-100
+synclient PalmDetect=1
 
 # XRANDR
 # xrandr --output DP-0 --auto --primary \
