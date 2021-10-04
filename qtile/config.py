@@ -190,7 +190,7 @@ layouts = [
     layout.MonadTall(**layout_theme),
     layout.Max(**layout_theme),
     layout.Stack(num_stacks=2),
-    layout.Floating(**layout_theme)
+    layout.Floating(config=layout_theme)
 ]
 
 # WIDGETS
