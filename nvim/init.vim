@@ -68,6 +68,9 @@ let g:airline_symbols.linenr = ''
 :let mapleader = "-"
 " Leader save
 nnoremap <Leader><space> :w<CR>
+" Leader run python unittests
+nnoremap <Leader>u :!python3 -m unittest discover<CR>
+nnoremap <Leader>p :!python3 -m pytest <CR>
 
 " Color settings
 colorscheme dracula
