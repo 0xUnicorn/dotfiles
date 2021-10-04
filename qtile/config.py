@@ -146,15 +146,17 @@ keys = [
 
 # GROUPS / WORKSPACES
 
-group_names = [("WWW", {'layout': 'monadtall'}),
-               ("DEV", {'layout': 'monadtall'}),
-               ("SYS", {'layout': 'monadtall'}),
-               ("DOC", {'layout': 'monadtall'}),
-               ("CHAT", {'layout': 'monadtall'}),
-               ("VIRT", {'layout': 'monadtall'}),
-               ("SSH", {'layout': 'monadtall'}),
-               ("WWW2", {'layout': 'monadtall'}),
-               ("GFX", {'layout': 'floating'})]
+group_names = [
+    ("WWW", 'monadtall'),
+    ("DEV", 'monadtall'),
+    ("SYS", 'monadtall'),
+    ("DOC", 'monadtall'),
+    ("CHAT", 'monadtall'),
+    ("VIRT", 'monadtall'),
+    ("SSH", 'monadtall'),
+    ("WWW2", 'monadtall'),
+    ("GFX", 'floating')
+]
 
 groups = [
     Group(name=name, layout=layout) for
