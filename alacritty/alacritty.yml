@@ -103,7 +103,7 @@ scrolling:
 #
 # Color schema
 
-background_opacity: 1.0
+windows.opacity: 1.0
 # colors:
 #   # Default colors
 #   primary:
@@ -204,7 +204,7 @@ font:
   offset:
     x: 0
     y: 1
-  size: 12.0
+  size: 8.0
 
 
 # Regex hints
