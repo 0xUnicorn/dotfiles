@@ -35,6 +35,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'jmcantrell/vim-virtualenv'
     " NVIM LSP Config
     Plug 'neovim/nvim-lspconfig'
+    " LSP Saga
+    "" Plug 'glepnir/lspsaga.nvim'
     " VIM vsnip
     Plug 'hrsh7th/vim-vsnip'
     " NVIM Completion engine

@@ -146,19 +146,21 @@ keys = [
 
 # GROUPS / WORKSPACES
 
-group_names = [("WWW", {'layout': 'monadtall'}),
-               ("DEV", {'layout': 'monadtall'}),
-               ("SYS", {'layout': 'monadtall'}),
-               ("DOC", {'layout': 'monadtall'}),
-               ("CHAT", {'layout': 'monadtall'}),
-               ("VIRT", {'layout': 'monadtall'}),
-               ("SSH", {'layout': 'monadtall'}),
-               ("WWW2", {'layout': 'monadtall'}),
-               ("GFX", {'layout': 'floating'})]
+group_names = [
+    ("WWW", 'monadtall'),
+    ("DEV", 'monadtall'),
+    ("SYS", 'monadtall'),
+    ("DOC", 'monadtall'),
+    ("CHAT", 'monadtall'),
+    ("VIRT", 'monadtall'),
+    ("SSH", 'monadtall'),
+    ("WWW2", 'monadtall'),
+    ("GFX", 'floating')
+]
 
 groups = [
-    Group(name, **kwargs) for
-    name, kwargs in group_names
+    Group(name=name, layout=layout) for
+    name, layout in group_names
 ]
 
 for i, (name, kwargs) in enumerate(group_names, 1):
@@ -190,7 +192,7 @@ layouts = [
     layout.MonadTall(**layout_theme),
     layout.Max(**layout_theme),
     layout.Stack(num_stacks=2),
-    layout.Floating(**layout_theme)
+    layout.Floating(config=layout_theme)
 ]
 
 # WIDGETS
