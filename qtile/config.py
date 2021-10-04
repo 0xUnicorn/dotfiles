@@ -157,8 +157,8 @@ group_names = [("WWW", {'layout': 'monadtall'}),
                ("GFX", {'layout': 'floating'})]
 
 groups = [
-    Group(name, **kwargs) for
-    name, kwargs in group_names
+    Group(name=name, layout=layout) for
+    name, layout in group_names
 ]
 
 for i, (name, kwargs) in enumerate(group_names, 1):
