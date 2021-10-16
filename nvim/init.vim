@@ -7,6 +7,9 @@ luafile ~/.config/nvim/lua/lsp/python-ls.lua
 " Autocomplete (nvim-cmp)
 luafile ~/.config/nvim/lua/plugins/cmp-config.lua
 
+" Auto Pairs
+let g:AutoPairsShortcutFastWrap = '<C-e>'
+
 " NERDTree
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
