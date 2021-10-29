@@ -119,4 +119,7 @@ fi
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 . "$HOME/.cargo/env"
+export PATH="$HOME/.local/bin:$PATH"
+
 source ~/.bash_completion.d/alacritty
+source ~/.bash_completion/alacritty

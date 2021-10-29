@@ -148,11 +148,11 @@ keys = [
 
 group_names = [
     ("WWW", 'monadtall'),
-    ("DEV", 'monadtall'),
+    ("SHELL", 'monadtall'),
     ("SYS", 'monadtall'),
     ("DOC", 'monadtall'),
     ("CHAT", 'monadtall'),
-    ("VIRT", 'monadtall'),
+    ("VPN", 'monadtall'),
     ("SSH", 'monadtall'),
     ("WWW2", 'monadtall'),
     ("GFX", 'floating')
@@ -295,7 +295,7 @@ def widgets_list():
             foreground = colors[5]
         ),
         widget.Net(
-            interface = "enp6s0",
+            interface = "eth0",
             format = '{down}↓↑{up}',
             foreground = colors[2],
             background = colors[0],
@@ -332,9 +332,9 @@ def init_widgets_screen3():
 
 def init_screens():
     return [
-        Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=25)),
-        Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=25)),
-        Screen(top=bar.Bar(widgets=init_widgets_screen3(), opacity=1.0, size=25))
+#        Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=25)),
+        Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=25))
+#        Screen(top=bar.Bar(widgets=init_widgets_screen3(), opacity=1.0, size=25))
     ]
 
 # Start screens
