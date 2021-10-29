@@ -7,7 +7,7 @@ from libqtile.lazy import lazy
 
 mod = "mod1"
 TERMINAL = "alacritty"
-MY_BROWSER = "brave-browser"
+MY_BROWSER = "firefox"
 
 keys = [
 
