@@ -37,7 +37,7 @@ keys = [
         desc="Toggle between layouts"
     ),
 
-    Key([mod, "shift"], "Tab",
+    Key([mod, "shift"], "space",
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"
     ),
@@ -99,8 +99,12 @@ keys = [
         lazy.layout.up(),
         desc="Move focus up"
     ),
-    Key([mod], "space",
+    Key([mod], "l",
         lazy.layout.next(),
+        desc="Move window focus to other window"
+    ),
+    Key([mod], "h",
+        lazy.layout.previous(),
         desc="Move window focus to other window"
     ),
 

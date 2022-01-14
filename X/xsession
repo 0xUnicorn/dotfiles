@@ -6,11 +6,15 @@ nitrogen --restore &
 # COMPTON
 compton &
 
+# REDSHIFT
+redshift -t 6500:3100 &
+
 # KEYBOARD SPEED
 xset r rate 200 60
 
 # KEYBOARD MAPPINGS
 setxkbmap -option caps:escape
+xmodmap -e "keycode 134 = Escape"
 
 # XRANDR
 xrandr --output DP-0 --auto --primary \
