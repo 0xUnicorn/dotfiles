@@ -11,8 +11,8 @@ fi
 
 # CUSTOM ALIASES
 
-alias bw='bw --pretty'
-alias vim='nvim'
+alias bw='/usr/bin/bw --pretty'
+alias vim='/usr/bin/nvim'
 alias l='ls -lh'
 alias a='ls -lha'
 alias ..='../'
