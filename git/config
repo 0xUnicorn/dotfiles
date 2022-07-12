@@ -1,8 +1,0 @@
-[user]
-    email = 17219001+0xUnicorn@users.noreply.github.com
-    name = 0xUnicorn
-[init]
-    defaultBranch = main
-[safe]
-    directory = /mnt/bornhack
-
