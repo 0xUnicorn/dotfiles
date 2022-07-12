@@ -1,5 +1,8 @@
-[user] # default, personally
-	email = 17219001+0xUnicorn@users.noreply.github.com
-	name = 0xUnicorn
-[includeIf "gitdir:~/cybermonkey/"] # cybermonkey
-    path = ./config-work
+[user]
+    email = 17219001+0xUnicorn@users.noreply.github.com
+    name = 0xUnicorn
+[init]
+    defaultBranch = main
+[safe]
+    directory = /mnt/bornhack
+
