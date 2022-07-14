@@ -50,9 +50,18 @@ keys = [
 
     # LAUNCH SSH SESSIONS
 
-    Key([MOD, "control"], "0",
-        lazy.spawn(f'{TERMINAL} -e ssh -t cs30 tmux a -d'),
-        desc="Launch SSH CS30"),
+#    Key([MOD, "control"], "0",
+#        lazy.run_extension(extension.DmenuRun(
+#            command=f'{TERMINAL} -e $0',
+#            commands={
+#                'CS30': f'{TERMINAL} -e ssh -t cs30 tmux a -d'
+#            },
+#            pre_commands=['echo $0 > /tmp/dmenu.txt']
+#        ))),
+
+#    Key([MOD, "control"], "0",
+#        lazy.spawn(f'{TERMINAL} -e ssh -t cs30 tmux a -d'),
+#        desc="Launch SSH CS30"),
 
     # LAUNCH APPLICATIONS
 
@@ -67,6 +76,10 @@ keys = [
     Key([MOD], "m",
         lazy.spawn('tidal-hifi'),
         desc="Launch Tidal"),
+
+    Key([MOD], "a",
+        lazy.spawn('authy'),
+        desc="Launch Authy"),
 
     Key([MOD, 'shift'], 'm',
         lazy.spawn('thunderbird'),
