@@ -48,20 +48,16 @@ keys = [
         lazy.spawn('systemctl reboot'),
         desc='Reboot System'),
 
-    # LAUNCH SSH SESSIONS
+    # LAUNCH DMENU SCRIPTS
 
-#    Key([MOD, "control"], "0",
-#        lazy.run_extension(extension.DmenuRun(
-#            command=f'{TERMINAL} -e $0',
-#            commands={
-#                'CS30': f'{TERMINAL} -e ssh -t cs30 tmux a -d'
-#            },
-#            pre_commands=['echo $0 > /tmp/dmenu.txt']
+#    Key([MOD, "shift"], "0",
+#        lazy.run_extension(extension.Dmenu(
+#            command='ls -l'
 #        ))),
 
-#    Key([MOD, "control"], "0",
-#        lazy.spawn(f'{TERMINAL} -e ssh -t cs30 tmux a -d'),
-#        desc="Launch SSH CS30"),
+    Key([MOD, "control"], "0",
+        lazy.spawn('dmenu_ssh.sh'),
+        desc="Launch SSH server list"),
 
     # LAUNCH APPLICATIONS
 

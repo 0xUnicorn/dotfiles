@@ -4,7 +4,7 @@
 /usr/bin/picom &
 
 # REDSHIFT
-#/usr/lib/geoclue-2.0/demos/agent &
+/usr/lib/geoclue-2.0/demos/agent &
 #redshift -t 6500:3100 &
 
 # BLUETOOTH
