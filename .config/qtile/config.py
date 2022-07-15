@@ -280,7 +280,7 @@ def _baseline_widgets():
             other_screen_border=colors.Normal.white),
         widget.TextBox(
             text='\uE0B0',
-            font='Symbols Nerd Font',
+            font='Noto Sans Mono',
             background=colors.Dim.blue,
             foreground=colors.Normal.inactive,
             fontsize=31,
@@ -291,7 +291,7 @@ def _baseline_widgets():
             background=colors.Dim.blue),
         widget.TextBox(
             text='\uE0B0',
-            font='Symbols Nerd Font',
+            font='Noto Sans Mono',
             #background=colors.Dim.blue,
             foreground=colors.Dim.blue,
             fontsize=31,
@@ -309,7 +309,7 @@ right_clock_spacer = widget.Spacer(length=bar.STRETCH)
 
 arrow_bluetooth = widget.TextBox(
     text='\uE0B2',
-    font='Symbols Nerd Font',
+    font='Noto Sans Mono',
     background=colors.Normal.background,
     foreground=colors.Normal.white,
     fontsize=31,
@@ -323,7 +323,7 @@ bluetooth = widget.Bluetooth(
 
 arrow_check_updates = widget.TextBox(
     text='\uE0B2',
-    font='Symbols Nerd Font',
+    font='Noto Sans Mono',
     background=colors.Normal.white,
     foreground=colors.Normal.green,
     fontsize=31,
@@ -340,7 +340,7 @@ check_updates_pacman = widget.CheckUpdates(
 
 wing_check_updates = widget.TextBox(
     text='\uE0B3',
-    font='Symbols Nerd Font',
+    font='Noto Sans Mono',
     background=colors.Normal.green,
     foreground=colors.Normal.background,
     fontsize=31,
@@ -357,7 +357,7 @@ check_updates_yay = widget.CheckUpdates(
 
 arrow_volume = widget.TextBox(
     text='\uE0B2',
-    font='Symbols Nerd Font',
+    font='Noto Sans Mono',
     background=colors.Bright.green,
     foreground=colors.Bright.yellow,
     fontsize=31,
@@ -370,7 +370,7 @@ volume = widget.Volume(
 
 arrow_storage = widget.TextBox(
     text='\uE0B2',
-    font='Symbols Nerd Font',
+    font='Noto Sans Mono',
     background=colors.Bright.yellow,
     foreground=colors.Bright.cyan,
     fontsize=31,
@@ -388,7 +388,7 @@ storage_root = widget.DF(
 
 wing_storage = widget.TextBox(
     text='\uE0B3',
-    font='Symbols Nerd Font',
+    font='Noto Sans Mono',
     background=colors.Bright.cyan,
     foreground=colors.Normal.background,
     fontsize=31,
@@ -407,7 +407,7 @@ storage_vault = widget.DF(
 
 arrow_memory = widget.TextBox(
     text='\uE0B2',
-    font='Symbols Nerd Font',
+    font='Noto Sans Mono',
     background=colors.Bright.cyan,
     foreground=colors.Bright.red,
     fontsize=31,
@@ -424,7 +424,7 @@ memory = widget.Memory(
 
 arrow_cpu = widget.TextBox(
     text='\uE0B2',
-    font='Symbols Nerd Font',
+    font='Noto Sans Mono',
     background=colors.Bright.red,
     foreground=colors.Bright.magenta,
     fontsize=31,
@@ -440,7 +440,7 @@ cpu = widget.CPU(
 
 arrow_net = widget.TextBox(
     text='\uE0B2',
-    font='Symbols Nerd Font',
+    font='Noto Sans Mono',
     background=colors.Bright.magenta,
     foreground=colors.Bright.blue,
     fontsize=31,
@@ -460,7 +460,7 @@ net = widget.Net(
 
 arrow_power = widget.TextBox(
     text='\uE0B2',
-    font='Symbols Nerd Font',
+    font='Noto Sans Mono',
     background=colors.Bright.blue,
     foreground=colors.Bright.black,
     fontsize=31,
@@ -468,7 +468,7 @@ arrow_power = widget.TextBox(
 
 power = widget.TextBox(
     text='\uF011',
-    font='Symbols Nerd Font',
+    font='Noto Sans Mono',
     background=colors.Bright.black,
     foreground=colors.Bright.white,
     fontsize=15,
