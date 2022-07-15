@@ -5,7 +5,8 @@ import subprocess
 from typing import List  # noqa: F401
 
 from libqtile import hook
-from libqtile import bar, layout
+from libqtile import bar
+from libqtile import layout
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
@@ -62,7 +63,7 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 
 # LAYOUTS
 layout_theme = {
-    'margin': 10,
+    'margin': 8,
     'border_width': 1,
     'border_focus': colors.Dim.magenta,
     'border_normal': colors.Normal.inactive
@@ -84,20 +85,20 @@ widget_defaults = dict(
 
 fonts = widgets.Fonts(symbols='Symbols Nerd Font')
 symbols = widgets.Symbols(fonts)
-all_widgets = widgets.WorkstationWidgets(terminal, fonts, symbols).get_widgets()
+all_widgets = widgets.WorkstationWidgets(terminal, fonts, symbols)
 
+# SCREENS
+screens = [
+    Screen(top=bar.Bar(all_widgets.get_widgets(), size=20))
+    for _ in range(3)
+]
 
-def init_screens():
-    return [
-        Screen(top=bar.Bar(widgets=all_widgets.copy(), size=20)),
-        Screen(top=bar.Bar(widgets=all_widgets.copy(), size=20)),
-        Screen(top=bar.Bar(widgets=all_widgets.copy(), size=20))
-    ]
-
-# Start screens
-screens = init_screens()
-
-# Drag floating layouts.
+# MOUSE ACTIONS
+dgroups_key_binder = None
+dgroups_app_rules = []  # type: List
+follow_mouse_focus = True
+bring_front_click = False
+cursor_warp = False
 mouse = [
     Drag([MOD], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
@@ -105,12 +106,6 @@ mouse = [
          start=lazy.window.get_size()),
     Click([MOD], "Button2", lazy.window.bring_to_front())
 ]
-
-dgroups_key_binder = None
-dgroups_app_rules = []  # type: List
-follow_mouse_focus = True
-bring_front_click = False
-cursor_warp = False
 
 # FLOATING APPLICATIONS
 floating_layout = layout.Floating(float_rules=[
