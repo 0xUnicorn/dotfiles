@@ -519,8 +519,8 @@ def systray_widgets():
 
 def init_screens():
     return [
-        Screen(top=bar.Bar(widgets=default_widgets(), size=20)),
-        Screen(top=bar.Bar(widgets=default_widgets(), size=20)),
+#        Screen(top=bar.Bar(widgets=default_widgets(), size=20)),
+#        Screen(top=bar.Bar(widgets=default_widgets(), size=20)),
         Screen(top=bar.Bar(widgets=systray_widgets(), size=20))
     ]
 
