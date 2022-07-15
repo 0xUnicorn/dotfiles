@@ -1,5 +1,4 @@
 import dataclasses
-import abc
 from typing import List
 
 from libqtile import config
