@@ -1,227 +1,52 @@
 import os
+import socket
 import subprocess
 
 from typing import List  # noqa: F401
 
 from libqtile import qtile
 from libqtile import hook
-from libqtile import bar, layout, widget, extension
+from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 import colors
+import keybindings
+
+
+# APPLICATIONS
+browser = 'brave'
+file_manager = 'pcmanfm'
+terminal = 'alacritty'
+
+# SYSTEM
+home = os.path.expanduser('~')
+hostname = socket.gethostname()
+
+# KEYBINDINGS
+MOD = 'mod1' # DEPRECATED
+keybind_keys = keybindings.Keys()
+keys = keybindings.WorkstationKeybindings(
+    keybind_keys, terminal, browser, file_manager).get_keybindings()
 
 
 @hook.subscribe.startup_once
 def start_once():
-    home = os.path.expanduser('~')
     subprocess.call([home + '/.config/qtile/autostart.sh'])
 
-
-MOD = "mod1"
-TERMINAL = "alacritty"
-MY_BROWSER = "brave"
-
-keys = [
-
-    # QTILE COMMANDS
-
-    Key([MOD, "control"], "r",
-        lazy.restart(),
-        desc="Restart Qtile"),
-
-    Key([MOD, "control"], "q",
-        lazy.shutdown(),
-        desc="Shutdown Qtile"),
-
-    # POWER COMMANDS
-
-    Key([MOD, "control", "shift"], "s",
-        lazy.spawn('systemctl hibernate'),
-        desc='Hibernate System'),
-
-    Key([MOD, "control", "shift"], "q",
-        lazy.spawn('systemctl poweroff'),
-        desc='Poweroff System'),
-
-    Key([MOD, "control", "shift"], "r",
-        lazy.spawn('systemctl reboot'),
-        desc='Reboot System'),
-
-    # LAUNCH DMENU SCRIPTS
-
-#    Key([MOD, "shift"], "0",
-#        lazy.run_extension(extension.Dmenu(
-#            command='ls -l'
-#        ))),
-
-    Key([MOD, "control"], "0",
-        lazy.spawn('dmenu_ssh.sh'),
-        desc="Launch SSH server list"),
-
-    # LAUNCH APPLICATIONS
-
-    Key([MOD], "Return",
-        lazy.spawn(TERMINAL),
-        desc="Launch terminal"),
-
-    Key([MOD], "BackSpace",
-        lazy.spawn('pcmanfm'),
-        desc="Launch filemanager"),
-
-    Key([MOD], "m",
-        lazy.spawn('tidal-hifi'),
-        desc="Launch Tidal"),
-
-    Key([MOD], "a",
-        lazy.spawn('authy'),
-        desc="Launch Authy"),
-
-    Key([MOD, 'shift'], 'm',
-        lazy.spawn('thunderbird'),
-        desc='Launch Thunderbird'),
-
-    Key([MOD, "shift"], "s",
-        lazy.spawn("gnome-screenshot -i"),
-        desc="Screenshot of an area to clipboard"),
-
-    Key([MOD], "d",
-        lazy.spawn('discord'),
-        desc="Launch Discord"),
-
-    Key([MOD], "b",
-        lazy.spawn(MY_BROWSER),
-        desc="Spawn a command using dmenu_run"),
-
-    Key([MOD, 'shift'], 'Return',
-        lazy.run_extension(extension.DmenuRun(
-            dmenu_prompt="\uF120",
-            dmenu_font="Ubuntu Mono",
-            background=colors.Normal.background,
-            foreground=colors.Dim.white,
-            selected_background=colors.Dim.magenta,
-            selected_foreground=colors.Normal.background)),
-        desc="Launch Dmenu"),
-
-    # VOLUME CONTROL
-
-    Key([], "XF86AudioLowerVolume",
-        lazy.spawn("amixer -D pulse set Master 5%- unmute"),
-        desc="Turn master volume up 5%"),
-
-    Key([], "XF86AudioRaiseVolume",
-        lazy.spawn("amixer -D pulse set Master 5%+ unmute"),
-        desc="Turn master volume down 5%"),
-
-    # LOCK SCREEN
-
-    Key(["mod4"], "l",
-        lazy.spawn("dm-tool lock"),
-        desc="Lock screen"),
-
-    # SCREEN FOCUS
-
-    Key([MOD], "q",
-        lazy.to_screen(2),
-        desc='Keyboard focus to monitor 1'),
-
-    Key([MOD], "w",
-        lazy.to_screen(0),
-        desc='Keyboard focus to monitor 2'),
-
-    Key([MOD], "e",
-        lazy.to_screen(1),
-        desc='Keyboard focus to monitor 3'),
-
-    # SWITCH BETWEEN LAYOUTS
-
-    Key([MOD], "Tab",
-        lazy.next_layout(),
-        desc="Toggle next layout"),
-
-    Key([MOD, "shift"], "Tab",
-        lazy.prev_layout(),
-        desc="Toggle previous layout"),
-
-    # MOVE LAYOUT FOCUS
-
-    Key([MOD], "j",
-        lazy.layout.down(),
-        desc="Move layout focus down"),
-
-    Key([MOD], "k",
-        lazy.layout.up(),
-        desc="Move layout focus up"),
-
-    Key([MOD], "h",
-        lazy.layout.left(),
-        desc="Move layout focus left"),
-
-    Key([MOD], "l",
-        lazy.layout.up(),
-        desc="Move layout focus right"),
-
-    # SHUFFLE LAYOUT
-
-    Key([MOD, "shift"], "h",
-        lazy.layout.shuffle_left(),
-        desc="Shuffle layout to the left"),
-
-    Key([MOD, "shift"], "l",
-        lazy.layout.shuffle_right(),
-        desc="Shuffle layout to the right"),
-
-    Key([MOD, "shift"], "j",
-        lazy.layout.shuffle_down(),
-        desc="Shuffle layout down"),
-
-    Key([MOD, "shift"], "k",
-        lazy.layout.shuffle_up(),
-        desc="Shuffle layout up"),
-
-    # CHANGE LAYOUT SIZES
-
-    Key([MOD, "control"], "j",
-        lazy.layout.shrink(),
-        desc="Shrink the focused layout"),
-
-    Key([MOD, "control"], "k",
-        lazy.layout.grow(),
-        desc="Grow the focused layout"),
-
-    Key([MOD, "control"], "l",
-        lazy.layout.normalize(),
-        desc="Normalize the layout to default"),
-
-    Key([MOD, "control"], "h",
-        lazy.layout.maximize(),
-        desc="Maximize the focused layout"),
-
-    # CONTROL WINDOW
-
-    Key([MOD], "f",
-        lazy.window.toggle_floating(),
-        desc='Toggle floating'),
-
-    Key([MOD, "shift"], "c",
-        lazy.window.kill(),
-        desc="Kill focused window"),
-
-
-]
 
 # GROUPS
 
 group_names = [
-    ("WWW", 'monadtall'),
-    ("DEV", 'monadtall'),
-    ("SYS", 'monadtall'),
-    ("DOC", 'monadtall'),
-    ("COMMS", 'monadtall'),
-    ("VIRT", 'monadtall'),
-    ("SSH", 'monadtall'),
-    ("WWW2", 'monadtall'),
-    ("MEDIA", 'monadtall')
+    ('WWW', 'monadtall'),
+    ('DEV', 'monadtall'),
+    ('SYS', 'monadtall'),
+    ('DOC', 'monadtall'),
+    ('COMMS', 'monadtall'),
+    ('VIRT', 'monadtall'),
+    ('SSH', 'monadtall'),
+    ('WWW2', 'monadtall'),
+    ('MEDIA', 'monadtall')
 ]
 
 groups = [
@@ -336,7 +161,7 @@ check_updates_pacman = widget.CheckUpdates(
     no_update_string='\uF1B3 0',
     background=colors.Normal.green,
     colour_have_updates=colors.Dim.blue,
-    execute=f'{TERMINAL} -e sudo pacman -Syu')
+    execute=f'{terminal} -e sudo pacman -Syu')
 
 wing_check_updates = widget.TextBox(
     text='\uE0B3',
@@ -353,7 +178,7 @@ check_updates_yay = widget.CheckUpdates(
     no_update_string='\uF1B3 0',
     background=colors.Normal.green,
     colour_have_updates=colors.Dim.blue,
-    execute=f'{TERMINAL} -e yay -Syu --aur')
+    execute=f'{terminal} -e yay -Syu --aur')
 
 arrow_volume = widget.TextBox(
     text='\uE0B2',
@@ -383,7 +208,7 @@ storage_root = widget.DF(
     foreground=colors.Dim.blue,
     mouse_callbacks = {
         'Button1': lambda: qtile.cmd_spawn(
-            TERMINAL + ' --hold -e dust -d 1 -x /')
+            terminal + ' --hold -e dust -d 1 -x /')
     })
 
 wing_storage = widget.TextBox(
@@ -402,7 +227,7 @@ storage_vault = widget.DF(
     foreground=colors.Dim.blue,
     mouse_callbacks = {
         'Button1': lambda: qtile.cmd_spawn(
-            TERMINAL + ' --hold -e dust -d 1 -x /home/unicorn/Documents/vault')
+            terminal + ' --hold -e dust -d 1 -x /home/unicorn/Documents/vault')
     })
 
 arrow_memory = widget.TextBox(
@@ -419,7 +244,7 @@ memory = widget.Memory(
     background=colors.Bright.red,
     foreground=colors.Dim.blue,
     mouse_callbacks = {
-        'Button1': lambda: qtile.cmd_spawn(TERMINAL + ' --hold -e free -h')
+        'Button1': lambda: qtile.cmd_spawn(terminal + ' --hold -e free -h')
     })
 
 arrow_cpu = widget.TextBox(
@@ -435,7 +260,7 @@ cpu = widget.CPU(
     background=colors.Bright.magenta,
     foreground=colors.Dim.blue,
     mouse_callbacks = {
-        'Button1': lambda: qtile.cmd_spawn(TERMINAL + ' -e htop')
+        'Button1': lambda: qtile.cmd_spawn(terminal + ' -e htop')
     })
 
 arrow_net = widget.TextBox(
@@ -455,7 +280,7 @@ net = widget.Net(
     foreground=colors.Dim.blue,
     padding=5,
     mouse_callbacks = {
-        'Button1': lambda: qtile.cmd_spawn(TERMINAL + ' -e ping 8.8.8.8')
+        'Button1': lambda: qtile.cmd_spawn(terminal + ' -e ping 8.8.8.8')
     })
 
 arrow_power = widget.TextBox(
