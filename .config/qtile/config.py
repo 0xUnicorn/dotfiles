@@ -10,7 +10,7 @@ import configurations
 def get_configuration(hostname: str):
     devices = {
         '0xUnicorn': configurations.WorkstationConfiguration,
-        'Laptop': configurations.LaptopConfiguration,
+        'laptop': configurations.LaptopConfiguration,
     }
     try:
         return devices[hostname]
