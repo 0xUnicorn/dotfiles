@@ -2,6 +2,7 @@ import dataclasses
 from typing import List
 
 from libqtile import config
+from libqtile import widget
 from libqtile import extension
 from libqtile.lazy import lazy
 
@@ -256,4 +257,16 @@ class WorkstationKeybindings(_Keybindings):
 class LaptopKeybindings(_Keybindings):
     """Keybindings used for Laptop configurations.
     """
+
+    def brightness_controls(self) -> List:
+        return [
+            config.Key([], 'XF86MonBrightnessUp',
+                       lazy.widget['backlight'].change_backlight(
+                           widget.backlight.ChangeDirection.UP),
+                       desc='Lower screen brightness'),
+            config.Key([], 'XF86MonBrightnessDown',
+                       lazy.widget['backlight'].change_backlight(
+                           widget.backlight.ChangeDirection.DOWN),
+                       desc='Lower screen brightness'),
+        ]
 
