@@ -44,6 +44,16 @@ class Symbols:
 
 
 @dataclasses.dataclass
+class WidgetDefaults:
+
+    font: str = 'Ubuntu Mono'
+    fontsize: int = 12
+    padding: int = 2
+    background: str = colors.Normal.background
+    foreground: str = colors.Normal.white
+
+
+@dataclasses.dataclass
 class _Widgets:
     """Base class for all default widgets.
     """
@@ -51,6 +61,7 @@ class _Widgets:
     terminal: str
     fonts: Fonts
     symbols: Symbols
+    defaults: WidgetDefaults
 
     def get_widgets(self) -> List:
         all_widgets = []
@@ -87,16 +98,22 @@ class _Widgets:
                 background=colors.Dim.blue),
             self.symbols.arrow(
                 self.symbols.right_arrow,
-                fg=colors.Dim.blue)
+                fg=colors.Dim.blue,
+                bg=self.defaults.background)
         ]
 
     def center_widgets(self) -> List:
         return [
-            widget.Spacer(length=bar.STRETCH),
+            widget.Spacer(
+                length=bar.STRETCH,
+                background=self.defaults.background),
             widget.Clock(
                 format='%a %d-%m-%y %H:%M:%S',
-                font='Ubuntu Bold'),
-            widget.Spacer(length=bar.STRETCH)
+                font='Ubuntu Bold',
+                background=self.defaults.background),
+            widget.Spacer(
+                length=bar.STRETCH,
+                background=self.defaults.background),
         ]
 
     def right_widgets(self) -> List:

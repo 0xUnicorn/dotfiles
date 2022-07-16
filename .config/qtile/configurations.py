@@ -64,6 +64,8 @@ class _Configuration:
     auto_fullscreen: bool = True
     focus_on_window_activation: str = 'smart'
     reconfigure_screens: bool = True
+    # If things like steam games want to auto-minimize themselves when losing
+    # focus, should we respect this or not?
     auto_minimize: bool = True
 
     layout_theme: Dict = dataclasses.field(default_factory=lambda: {
@@ -93,14 +95,11 @@ class _Configuration:
         ], **self.layout_theme)
 
     # WIDGETS
-    widget_defaults: Dict = dataclasses.field(default_factory=lambda: {
-        'font': 'Ubuntu Mono',
-        'fontsize': 12,
-        'padding': 2,
-        'background': colors.Normal.background,
-        'foreground': colors.Normal.white
-    })
     fonts: widgets.Fonts = dataclasses.field(default_factory=widgets.Fonts)
+
+    @property
+    def widget_defults(self) -> widgets.WidgetDefaults:
+        return widgets.WidgetDefaults()
 
     @property
     def symbols(self) -> widgets.Symbols:
@@ -148,15 +147,8 @@ class _Configuration:
     ]
 
 
-
-
 @dataclasses.dataclass
 class DefaultConfiguration(_Configuration):
-    pass
-
-
-@dataclasses.dataclass
-class WorkstationConfiguration(_Configuration):
 
     def keys(self) -> List:
         return keybindings.WorkstationKeybindings(
@@ -166,11 +158,34 @@ class WorkstationConfiguration(_Configuration):
             self.file_manager
         ).get_keybindings()
 
-    def get_widgets(self) -> List: #widgets.WorkstationWidgets:
+    def get_widgets(self) -> List:
         return widgets.WorkstationWidgets(
             self.terminal,
             self.fonts,
-            self.symbols).get_widgets()
+            self.symbols,
+            self.widget_defults).get_widgets()
+
+
+@dataclasses.dataclass
+class WorkstationConfiguration(_Configuration):
+
+    fonts: widgets.Fonts = dataclasses.field(
+        default_factory=lambda: widgets.Fonts(symbols='Symbols Nerd Font'))
+
+    def keys(self) -> List:
+        return keybindings.WorkstationKeybindings(
+            self.keybind_keys,
+            self.terminal,
+            self.browser,
+            self.file_manager
+        ).get_keybindings()
+
+    def get_widgets(self) -> List:
+        return widgets.WorkstationWidgets(
+            self.terminal,
+            self.fonts,
+            self.symbols,
+            self.widget_defults).get_widgets()
 
 
 @dataclasses.dataclass
@@ -184,8 +199,10 @@ class LaptopConfiguration(_Configuration):
             self.file_manager
         ).get_keybindings()
 
-    def get_widgets(self) -> List: #widgets.LaptopWidgets:
+    def get_widgets(self) -> List:
         return widgets.LaptopWidgets(
             self.terminal,
             self.fonts,
-            self.symbols).get_widgets()
+            self.symbols,
+            self.widget_defults).get_widgets()
+
