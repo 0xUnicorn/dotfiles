@@ -150,6 +150,8 @@ class _Configuration:
 @dataclasses.dataclass
 class DefaultConfiguration(_Configuration):
 
+    nic: str = ''
+
     def keys(self) -> List:
         return keybindings.WorkstationKeybindings(
             self.keybind_keys,
@@ -161,6 +163,7 @@ class DefaultConfiguration(_Configuration):
     def get_widgets(self) -> List:
         return widgets.WorkstationWidgets(
             self.terminal,
+            self.nic,
             self.fonts,
             self.symbols,
             self.widget_defults).get_widgets()
@@ -169,6 +172,7 @@ class DefaultConfiguration(_Configuration):
 @dataclasses.dataclass
 class WorkstationConfiguration(_Configuration):
 
+    nic: str = 'enp6s0'
     fonts: widgets.Fonts = dataclasses.field(
         default_factory=lambda: widgets.Fonts(symbols='Symbols Nerd Font'))
 
@@ -183,6 +187,7 @@ class WorkstationConfiguration(_Configuration):
     def get_widgets(self) -> List:
         return widgets.WorkstationWidgets(
             self.terminal,
+            self.nic,
             self.fonts,
             self.symbols,
             self.widget_defults).get_widgets()
@@ -190,6 +195,8 @@ class WorkstationConfiguration(_Configuration):
 
 @dataclasses.dataclass
 class LaptopConfiguration(_Configuration):
+
+    nic: str = 'wlp4s0'
 
     def keys(self) -> List:
         return keybindings.LaptopKeybindings(
@@ -202,6 +209,7 @@ class LaptopConfiguration(_Configuration):
     def get_widgets(self) -> List:
         return widgets.LaptopWidgets(
             self.terminal,
+            self.nic,
             self.fonts,
             self.symbols,
             self.widget_defults).get_widgets()

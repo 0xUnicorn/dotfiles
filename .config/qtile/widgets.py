@@ -59,6 +59,7 @@ class _Widgets:
     """
 
     terminal: str
+    nic: str
     fonts: Fonts
     symbols: Symbols
     defaults: WidgetDefaults
@@ -254,7 +255,7 @@ class _Widgets:
             widget.Net(
                 fmt='\uF6FF {}',
                 prefix='M',
-                interface='enp6s0',
+                interface=self.nic,
                 format='{down}↓↑{up}',
                 background=colors.Bright.blue,
                 foreground=colors.Dim.blue,
@@ -293,4 +294,8 @@ class WorkstationWidgets(_Widgets):
 class LaptopWidgets(_Widgets):
     """Widgets used for Laptop configurations.
     """
+
+    def storage(self) -> List:
+        widgets = super().storage()
+        return widgets[:2]
 
