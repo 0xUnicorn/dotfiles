@@ -39,4 +39,5 @@ This is a collection of all my different configuration files
 - [ ] Tmux configurations (vim navigation + buffer + rice)
 - [ ] Tmux env files for different auto-configured "workspaces"
 - [ ] Picom styling.
+- [ ] Nvim snippets (class with doc strings)
 
